@@ -1,4 +1,5 @@
 import express from "express";
+import './database' //Não precisa colocar o index por que com a raiz já reconhece
 
 const app = express();
 //GET
