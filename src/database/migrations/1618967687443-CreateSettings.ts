@@ -11,6 +11,8 @@ export class CreateSettings1618967687443 implements MigrationInterface {
                 {
                     name: "id",
                     type: "uuid",
+                    //generationStrategy: "uuid",responsabilidade do banco, podemos usar biblioteca
+
                     isPrimary: true
                 },
                 {
@@ -23,12 +25,12 @@ export class CreateSettings1618967687443 implements MigrationInterface {
                     default: true
                 },
                 {
-                    name: "updatedAt",
+                    name: "updated_at",
                     type: "timestamp",
                     default: "now()"
                 },
                 {
-                    name: "createdAt",
+                    name: "created_at",
                     type: "timestamp",
                     default: "now()"
                 }
