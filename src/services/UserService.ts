@@ -20,6 +20,7 @@ class UserService {
         return createdUser;
 
     }
+
 }
 
 export { UserService }
