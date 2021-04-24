@@ -90,8 +90,9 @@
   const chat = document.getElementById("chat_help");
 
   function onLoad() {
-    fetch("http://localhost:3333/settings/admin").then((result) =>
+    fetch("http://localhost:3333/settings/admininastro").then((result) =>
       result.json().then((response) => {
+        console.log(response)
         const buttonSupport = document.getElementById("btn_support");
         if (!response.chat) {
           buttonSupport.style.display = "none";
