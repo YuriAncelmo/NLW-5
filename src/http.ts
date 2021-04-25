@@ -26,6 +26,9 @@ app.use(routes);
 app.get("/pages/client", (request, response) => {
     return response.render("html/client.html");
 });
+app.get("/pages/admin", (request, response) => {
+    return response.render("html/admin.html");
+});
 //POST
 // app.post("/", (request, response) => {
 //     return response.json({ message: "User saved success" })

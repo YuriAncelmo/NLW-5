@@ -1,5 +1,4 @@
-import { response, Router } from "express";
-import { getCustomRepository } from "typeorm";
+import { Router } from "express";
 import { MessagesController } from "./controllers/MessagesController";
 import { SettingsController } from "./controllers/SettingsController";
 import { UsersController } from "./controllers/UsersController";

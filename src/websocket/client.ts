@@ -26,6 +26,30 @@ io.on("connect", (socket) => {
             text,
             user_id
         });
-        //Salva conexão com socketid e user id
+        const allMessages = await messageServices.listByUser(user_id);
+        socket.emit("client_list_all_messages", allMessages);
     })
+    //Recebe a mensagem que veio da página e emite
+    socket.on("client_send_to_admin", async (params) => {
+
+        const { text, socket_admin_id } = params;
+        const socket_id = socket.id;
+        const { user_id } = await connectionsService.findBySocketID(socket_id);
+
+        const message = await messageServices.create({
+            text,
+            user_id
+        })
+
+        const allUsers = await connectionsService.findAllWithoutAdmin();
+        //Ainda não dá pois há um bug que só possui o id do socket do admin, quando ele envia uma mensagem de volta
+        io.to(socket_admin_id).emit("admin_list_all_users", allUsers)
+        console.log("client_send_to_admin");
+
+        //Manda via IO para o socket do admin, para o evento admin receive message
+        io.to(socket_admin_id).emit("admin_receive_message", {
+            message,
+            socket_id
+        });
+    });
 });
